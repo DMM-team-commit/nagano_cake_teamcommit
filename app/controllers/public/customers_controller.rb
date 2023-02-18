@@ -4,4 +4,11 @@ class Public::CustomersController < ApplicationController
 
   def edit
   end
+  
+  def unsubscribe
+  end
+  
+  def withdraw
+  end
+  
 end
