@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about', as: 'about'
@@ -24,13 +24,13 @@ Rails.application.routes.draw do
     #get 'delivery_addresses/edit'
     resources :delivery_addresses, only: [:index, :edit, :create, :update, :destroy]
   end
-  
-  
+
+
   #管理者用
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-  
+
   namespace :admin do
     #get 'orders/show'
     #get 'items/index'
@@ -45,10 +45,10 @@ Rails.application.routes.draw do
     resources :order_details, only: [:update]
     get "orders/customers/:id" => "orders#index"
   end
-  
-  
-  
-  
+
+
+
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
