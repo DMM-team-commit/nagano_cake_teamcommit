@@ -4,8 +4,7 @@
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
     <h2>会員情報編集</h2>
-    <%= form_with model:@customer, local:true do |f| %>
-      <%#= render 'layouts/errors', obj: @user %>
+    <%= form_with(model:@customer, url:customers_information_path, local: true ) do |f| %>
       <div class="form-group">
         <%= "会員ID" %>
         <%= @customer.id %>
@@ -35,11 +34,12 @@
         <%= f.text_area :email, class: "form-control introduction" %>
       </div>
       <div class="form-group"><!--会員ステータス-->
-        <%= f.label : %>
-        <%= f.text_area :, class: "form-control introduction" %>
+        <%= f.label :email %>
+        <%= f.text_area :email, class: "form-control introduction" %>
       </div>
-      <div class="form-group">
-        <%= f.submit "変更を保存" class: 'btn btn-secondary' %>
+      <div>
+        <%= f.submit "変更を保存", class: 'btn btn-secondary' %>
+        <%= link_to '退会する', customers_unsubscribe_path, data: { confilm: "本当に退会しますか？" },class: "glyphicon glyphicon-tint btn btn-danger ml-4"%>
       </div>
     <% end %>
   </div>
