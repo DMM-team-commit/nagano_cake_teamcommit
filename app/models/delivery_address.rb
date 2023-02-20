@@ -1,5 +1,5 @@
 class DeliveryAddress < ApplicationRecord
     belongs_to :customer
-    validate :address, presence :true
-    validate :addressee, presence :true
+    validates :address, presence: true
+    validates :addressee, presence: true
 end
