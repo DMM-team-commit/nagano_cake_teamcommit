@@ -1,2 +1,10 @@
-<h1>Public::DeliveryAddresses#edit</h1>
-<p>Find me in app/views/public/delivery_addresses/edit.html.erb</p>
+<h1>配送先編集</h1>
+ <%= form_with model: @delivery_address do |f| %>
+  <h1>郵便番号</h1>
+   <%= f.text_field :post_code %>
+  <h1>住所</h1>
+   <%= f.text_field :address %> 
+  <h1>宛先</h1>
+   <%= f.text_field :addressee %>
+  <%= f.submit '変更内容を保存' %>
+  <% end %>

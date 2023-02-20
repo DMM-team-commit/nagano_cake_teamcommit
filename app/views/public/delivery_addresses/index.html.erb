@@ -1,2 +1,43 @@
-<h1>Public::DeliveryAddresses#index</h1>
-<p>Find me in app/views/public/delivery_addresses/index.html.erb</p>
+<div class="container px-5 px-sm-0">
+ <div class="row">
+    <div class="col-md-3">
+
+     <h1>配送先編集</h1>
+      <%= form_with model: @delivery_address do |f| %>
+       <h1>郵便番号()</h1>
+        <%= f.text_field :post_code %>
+       <h1>住所</h1>
+        <%= f.text_field :address %> 
+       <h1>宛先</h1>
+        <%= f.text_field :addressee %>
+       <%= f.submit '変更内容を保存' %>
+       <% end %>
+  
+     <table border = "1">
+      <thead>
+       <tr>
+        <th>郵便番号</th>
+        <th>住所</th>
+        <th>宛名</th>
+        <th></th>
+        </tr>
+      </thead>
+      <tbody>
+       <% @delivery_address.each do |add| %>
+        <tr>
+         <td><%= add.post_code %></td>
+         <td><%= add.address %></td>
+         <td><%= add.addressee %></td>
+         <td>
+          
+          <% if @post_image.user == current_user %>
+          <%= link_to "削除", post_image_path(@post_image), method: :delete %>
+         </td> 
+        </tr>
+      </tbody>
+      <% end %>
+     </table>
+    </div>
+ </div>
+</div>
+     
