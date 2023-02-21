@@ -1,5 +1,6 @@
 <!--<h1>Public::Customers#show</h1>-->
 <!--<p>Find me in app/views/public/customers/show.html.erb</p>-->
+<%= render 'layouts/header' %>
 <h2>My page</h2>
 <table class='table'>
   <tr>
@@ -35,8 +36,8 @@
 	  <th><%= "有効、無効" %></th>
   </tr>
 </table>
-　
+
 <div class='row'>
-  <%= link_to"編集する" customers_information_edit_path, class: "btn btn-outline-secondary btn-block" %>
-  <%= link_to "注文履歴一覧を見る" orders_path, class: "btn btn-outline-secondary btn-block" %>
+  <%= link_to "編集する", customers_information_edit_path, class: "btn btn-outline-secondary btn-block" %>
+  <%= link_to "注文履歴一覧を見る", orders_path, class: "btn btn-outline-secondary btn-block" %>
 </div>
