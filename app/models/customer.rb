@@ -14,6 +14,7 @@ class Customer < ApplicationRecord
   has_many :books, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
+  has_many :delivery_addresses,dependent: :destroy
   
 end
 

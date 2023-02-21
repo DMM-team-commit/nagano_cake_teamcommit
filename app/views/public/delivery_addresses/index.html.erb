@@ -1,2 +1,41 @@
-<h1>Public::DeliveryAddresses#index</h1>
-<p>Find me in app/views/public/delivery_addresses/index.html.erb</p>
+<%= flash[:success] %>
+<div class="container px-5 px-sm-0">
+ <div class="row">
+    <div>
+
+     <h1>配送先登録/一覧</h1>
+      <%= form_with model: @delivery_address do |f| %>
+       <h1>郵便番号(ハイフンなし)</h1>
+        <%= f.text_field :first_post_code %> - <%= f.text_field :second_post_code %>
+       <h1>住所</h1>
+        <%= f.text_field :address %> 
+       <h1>宛先</h1>
+        <%= f.text_field :addressee %>
+       <%= f.submit '新規登録' %>
+       <% end %>
+  
+     <table border = "1">
+      <thead>
+       <tr>
+        <th>郵便番号</th>
+        <th>住所</th>
+        <th>宛名</th><br>
+        <th></th>
+        </tr>
+      </thead>
+      <tbody>
+       <% @delivery_addresses.each do |add| %>
+        <tr>
+         <td><%= add.post_code %></td>
+         <td><%= add.address %></td>
+         <td><%= add.addressee %></td>
+         <td><%= link_to "編集する",edit_delivery_address_path(add.id) %></td>
+         <td><%= link_to "削除する", delivery_address_path(add.id), method: :delete %></td> 
+        </tr>
+      </tbody>
+      <% end %>
+     </table>
+    </div>
+ </div>
+</div>
+     
