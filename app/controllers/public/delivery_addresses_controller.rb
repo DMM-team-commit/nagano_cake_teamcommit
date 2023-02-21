@@ -3,7 +3,7 @@ class Public::DeliveryAddressesController < ApplicationController
   
   def index
     @delivery_address = DeliveryAddress.new
-    @delivery_address.customer_id = current_customer.id
+    @delivery_addresses = current_customer.delivery_addresses
     
   end
 
@@ -14,11 +14,12 @@ class Public::DeliveryAddressesController < ApplicationController
   def create
     @delivery_address = DeliveryAddress.new(delivery_address_params)
     @delivery_address.customer_id = current_customer.id
+    @post_code = params[:delivery_address][:first_post_code].to_s + params[:delivery_address][:second_post_code].to_s
+    @delivery_address.post_code = @post_code.to_i
     if  @delivery_address.save
-     redirect_to customers_delivery_address_path
+     redirect_to delivery_addresses_path
+     flash[:success] = "登録しました。"
     else
-     @delivery_address = DeliveryAddress.new
-     @delivery_address.customer_id = current_customer.id
      render 'index'
     end
   end
@@ -26,13 +27,13 @@ class Public::DeliveryAddressesController < ApplicationController
   def update
     delivery_address = DeliveryAddress.find(params[:id])
     delivery_address.update(delivery_address_params)
-    redirect_to customers_delivery_address_path
+    redirect_to delivery_addresses_path
   end
 
   def destroy
     delivery_address = DeliveryAddress.find(params[:id])
     delivery_address.destroy
-    redirect_to customers_delivery_address_path
+    redirect_to delivery_addresses_path
   end
   
     private
