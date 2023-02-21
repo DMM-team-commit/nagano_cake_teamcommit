@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about', as: 'about'
     resources :items, only: [:index, :show]
-    #resources :customers, only: [:show, :edit, :update]
     get '/customers/my_page' => 'customers#show'
     get '/customers/information/edit' => 'customers#edit'
     patch '/customers/information' => 'customers#update'
@@ -20,8 +19,6 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :show, :create, :index]
     post '/orders/confirm' => 'orders#confirm'
     get '/orders/complete' => 'customers#complete'
-    #get 'delivery_addresses/index'
-    #get 'delivery_addresses/edit'
     resources :delivery_addresses, only: [:index, :edit, :create, :update, :destroy]
   end
 
@@ -32,11 +29,6 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    #get 'orders/show'
-    #get 'items/index'
-    #get 'items/new'
-    #get 'items/show'
-    #get 'items/edit'
     get 'top' => 'homes#top', as: 'top'
     resources :items, only: [:index, :new, :create, :edit, :show, :update]
     resources :genres, only: [:index, :create, :edit, :update]
