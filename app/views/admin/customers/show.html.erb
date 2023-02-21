@@ -35,8 +35,8 @@
 	  <th><%= "有効、無効" %></th>
   </tr>
 </table>
-　
+
 <div class='row'>
-  <%= link_to"編集する" edit_user_path(user), class: "btn btn-outline-secondary btn-block" %>
-  <%= link_to "注文履歴一覧を見る" edit_user_path(user), class: "btn btn-outline-secondary btn-block" %>
+  <%= link_to "編集する", customers_information_edit_path(customer), class: "btn btn-outline-secondary btn-block" %>
+  <%= link_to "注文履歴一覧を見る", order_path(customer), class: "btn btn-outline-secondary btn-block" %>
 </div>
