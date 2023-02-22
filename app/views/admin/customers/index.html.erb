@@ -1,5 +1,5 @@
 <!--<h1>Admin::Customers#index</h1>-->
-<%= render 'layouts/header' %>
+
 <div class="container px-5 px-sm-0">
   <div class='row' style="margin-top:25px;">
     <div class="col-sm-8 px-sm-0 offset-sm-1">
@@ -8,25 +8,28 @@
     <div class="col-sm-10 px-sm-0 mx-auto mb-5">
     <table class='table table-hover'>
         <thead class="table-active">
-      <tr>
-        <th>会員ID</th>
-        <th>氏名</th>
-        <th>メールアドレス</th>
-        <th>ステータス</th>
-      </tr>
+          <tr>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>会員ステータス</th>
+          </tr>
         </thead>
         <tbody>
           <% @customers.each do |customer| %>
           <tr>
             <td><%= customer.id %></td>
-            <td><%= customer.last_name %></td>
+            <td><%= link_to customer.last_name+customer.first_name, admin_customer_path(customer), class: "text-dark font-weight-bold" %></td>
             <td><%= customer.email %></td>
-            <td><%= "ステータス" %></td>
+            <% if customer.is_deleted == false %>
+              <td class="text-success font-weight-bold">有効</td>
+            <% else %>
+              <td class="text-muted">退会</td>
+            <% end %>
           </tr>
+          <% end %>
         </tbody>
-      <% end %>
-      
+      </table>
     </div>
   </div>
 </div>
-<%#= render 'layouts/footer' %>
