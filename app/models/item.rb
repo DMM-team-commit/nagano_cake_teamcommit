@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   has_many :order_details
 
   def get_image(width, height)
-    unless item_image.attached?
+    unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       image.attach(io: File.open(file_path), filename: 'no_image.jpg', content_type: 'image/jpeg')
     end
