@@ -1,7 +1,7 @@
 class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
-   # @delivery_addresses = current_customer.delivery_addresses
+    #@delivery_address = current_customer.delivery_address
   end
   
   def comfirm
@@ -28,9 +28,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.where(customer_id: current_customer.id)
   end
   
   def show
+    @order = Order.find(params[:id])
+    @order_items = @order.order_details
   end
   
    private
