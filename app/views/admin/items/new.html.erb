@@ -3,7 +3,7 @@
   <h2>商品新規登録</h2>
   <%= form_with model: [:admin, @item] do |f| %>
        <div class="col-md-3">
-        <label for="item_image" class="col-form-label">商品画像</label>
+        <label for="iimage" class="col-form-label">商品画像</label>
       </div>
       <div class="col-md-3">
         <%= f.file_field :image, accept: "image/*"%>
@@ -20,14 +20,20 @@
       <div class="col-md-3">
         <%= f.text_area :description %>
       </div>
+
+      <div class="col-md-3">
+        <label for="genre" class="col-form-label">ジャンル</label>
       </div>
+      <div class="col-md-3">
+        <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+      </div>
+
 
       <div class="col-md-3">
         <label for="price" class="col-form-label">販売価格</label>
       </div>
       <div class="col-md-3">
         <%= f.number_field :price %>
-      </div>
       </div>
       <div class="col-md-3">
         <label for="status" class="col-form-label">販売ステータス</label>

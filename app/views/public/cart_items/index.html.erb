@@ -1,18 +1,13 @@
 <div class="container">
   <div class="row">
-    <h4 class="ml-5 mb-4">ショッピングカート</h4>
-    <div class="offset-7">
+    <h4>ショッピングカート</h4>
+    <div>
       <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-outline-secondary btn-sm" %>
     </div>
   </div>
   <div class="row">
-    <div class="col offset-2">
-
-    </div>
-  </div>
-  <div class="row">
-    <table class="table table-bordered">
-      <thead class="table-active">
+    <table>
+      <thead>
         <tr>
           <th>商品名</th>
           <th>単価(税込)</th>
@@ -21,11 +16,11 @@
           <th> </th>
         </tr>
       </thead>
-      <tbody class="table-sm h6">
+      <tbody>
         <% @cart_items.each do |cart_item| %>
           <tr>
-            <td class="pr-2"><%= image_tag cart_item.item.get_image(60,40) %><span class="offset-1"><%= cart_item.item.name %></span></td>
-            <td class="align-middle"><%= cart_item.item.price.to_s(:delimited) %></td>
+            <td><%= image_tag cart_item.item.get_image(60,40) %><span class="offset-1"><%= cart_item.item.name %></span></td>
+            <td><%= cart_item.item.price.to_s(:delimited) %></td>
             <td>
               <%= form_with url: cart_item_path(cart_item.id), model: cart_item do |f| %>
                 <%= f.select :item_amount, *[1..10] %>
@@ -46,11 +41,11 @@
       <%= link_to "買い物を続ける", root_path, class: "btn btn-outline-secondary" %>
     </div>
     <div class="col">
-      <table class="table table table-bordered">
+      <table>
         <tbody>
           <tr>
-            <th style="width: 20%" class="table-active flex-fill">合計金額</th>
-            <td class="align-middle">
+            <th>合計金額</th>
+            <td>
               <% @cart_items.each do |cart_item| %>
                 <% @total += cart_item.subtotal %>
               <% end %>
@@ -62,7 +57,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col align-middle text-center">
+    <div>
       <%= form_with model: @order, url: new_order_path, method: :get do |f| %>
         <% @cart_items.each do |cart_item| %>
           <%= f.hidden_field :id, :value => cart_item.id %>
