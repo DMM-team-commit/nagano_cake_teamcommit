@@ -17,7 +17,7 @@
               <%= f.hidden_field :customer_id, :value => current_customer.id %>
               <%= f.hidden_field :item_id, :value => @item.id %>
               <div class="row ml-2">
-                <%= f.select :item_amount, *[1..10] %>
+                <%= f.select :amount, *[1..10] %>
                 <div class="col">
                   <%= f.submit 'カートに入れる', class: "btn btn-success" %>
                 </div>
