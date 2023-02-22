@@ -1,0 +1,26 @@
+<div class="container">
+ <h1>注文情報確認画面</h1>
+  <%= form_with model: @order do |f| %>
+  
+  <table class ="table table-bordered">
+   <thead>
+    <tr>
+     <th>商品名</th>
+     <th>単価(税込)</th>
+     <th>数量</th>
+     <th>小計</th>
+    </tr>
+   </thead>
+    <tbody>
+       <% @cart_items.each do |cart| %>
+        <tr>
+          <td>
+           <%= image_tag cart.item.image, size: '50x50'
+           <%= cart.item.name %>
+          </td>
+          <td><%= (item.item.with_tax_price).to_s(:delimited) %></td> 
+          <td><%= item.amount %></td>
+          <td><%= item.subtotal.to_s(:delimited) %></td>
+        </tr>
+        <% end %>
+      </tbody>
