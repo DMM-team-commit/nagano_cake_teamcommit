@@ -9,6 +9,7 @@ class Customer < ApplicationRecord
   validates :last_name, :first_name, :last_name_kana, :first_name_kana, presence: true, length: { maximum: 20 }
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   
+  has_many :delivery_addresses,dependent: :destroy
   has_many :orders
   
 end
