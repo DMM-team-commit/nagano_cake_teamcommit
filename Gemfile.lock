@@ -251,11 +251,8 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
-<<<<<<< HEAD
   enum_help
-=======
   image_processing (~> 1.2)
->>>>>>> origin/develop
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pry-byebug
