@@ -3,7 +3,7 @@
     <h5 class="col-4 text-center">会員情報編集</h5>
   </div>
   <div class="col-12 mt-4">
-    <%= form_with model: @customer, url: customers_my_page_path, method: :get, local: true do |f| %>
+    <%= form_with model: @customer,url: customers_information_path, local: true do |f| %>
       <div class="field row">
         <p class="col-3">名前</p>
         <%= f.text_field :last_name, autofocus: true %>
@@ -36,7 +36,7 @@
         <%= f.email_field :email, autofocus: true %>
       </div>
 
-      <div class="actions row mt-3">
+      <div class="actions row">
         <%= f.submit "編集内容を保存", class: "btn btn-sm btn-success mr-md-5" %>
         <%= link_to '退会する', customers_unsubscribe_path, class: "glyphicon glyphicon-tint btn btn-secondary ml-4"%>
       </div>
