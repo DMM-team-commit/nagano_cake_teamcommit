@@ -13,7 +13,8 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     if @customer.update(customer_params)
       redirect_to customers_my_page_path
-    else render :edit
+    else 
+      render :edit
     end
   end
   
@@ -32,7 +33,7 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :fisrt_name_kana, :post_code, :adddress, :phone, :is_deleted)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :post_code, :address, :email, :phone, :is_deleted)
   end
 
 end
