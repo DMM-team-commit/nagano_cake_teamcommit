@@ -1,7 +1,7 @@
 class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
-   # @delivery_addresses = current_customer.delivery_addresses
+    @delivery_addresses = current_customer.delivery_addresses
   end
   
   def comfirm
