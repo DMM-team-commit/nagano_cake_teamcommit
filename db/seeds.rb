@@ -5,8 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Admin.create!(
+   email: 'test@test.com',
+   password: 'testtest'
+)
+
 Genre.create!(id: 1, name: 'ケーキ')
 
 Genre.create!(id: 2, name: 'プリン')
 
 Genre.create!(id: 3, name: '焼き菓子')
+

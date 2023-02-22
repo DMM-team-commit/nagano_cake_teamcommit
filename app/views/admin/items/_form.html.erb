@@ -1,4 +1,4 @@
-  <%= form_with model: [:admin, item_form], url: admin_item_path(item_form.id), method: :patch do |f| %>
+
   <div class="form-group row">
     <label class="col-md-2 offset-md-2">商品画像</label>
     <div class="col-md-5">
@@ -14,7 +14,7 @@
   <div class="form-group row">
     <label class="col-md-2 offset-md-2">商品説明</label>
     <div class="col-md-5">
-      <%= f.text_area :descrition, rows: "6",style: "width:60%;", placeholder: "ここに説明文を記述します" %>
+      <%= f.text_area :description, rows: "6",style: "width:60%;", placeholder: "ここに説明文を記述します" %>
     </div>
   </div>
   <div class="form-group row">
@@ -38,4 +38,27 @@
       <%= label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %>
     </div>
   </div>
+
+  <div class="row mb-5">
+    <div class="col-2 offset-md-5">
+      <div class="actions">
+        <% if local_assigns[:edit_flag].present? %>
+        <%= f.submit "変更を保存" ,class: 'btn btn-success' %>
+        <% else %>
+        <%= f.submit "新規登録" ,class: 'btn btn-success' %>
+        <% end %>
+
+      </div>
+     </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
 
