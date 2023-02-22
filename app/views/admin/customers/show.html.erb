@@ -34,11 +34,16 @@
           </tr>
           <tr>
         	  <th>会員ステータス</th>
-        	  <th><%= "有効、無効" %></th>
+              <th><% if @customer.is_deleted == false %>
+                  <td class="text-success font-weight-bold">有効</td>
+                <% else %>
+                  <td class="text-muted font-weight-bold">退会</td>
+                <% end %>
+              </th>
           </tr>
-          <%= link_to "編集する", customers_information_edit_path(customer), class: "btn btn-outline-secondary btn-block" %>
-          <%= link_to "注文履歴一覧を見る", order_path(customer), class: "btn btn-outline-secondary btn-block" %>
         </table>
+        <%= link_to "編集する", customers_information_edit_path, class: "btn btn-outline-secondary btn-block" %>
+        <%= link_to "注文履歴一覧を見る", orders_path, class: "btn btn-outline-secondary btn-block" %>
     </div>
   </div>
 </div>

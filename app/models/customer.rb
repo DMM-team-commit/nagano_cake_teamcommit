@@ -11,9 +11,6 @@ class Customer < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   validates :password, presence: true, length: { minimum: 6 }, format: { with: VALID_PASSWORD_REGEX }
   
-  has_many :books, dependent: :destroy
-  has_many :favorites, dependent: :destroy
-  has_many :book_comments, dependent: :destroy
   has_many :delivery_addresses,dependent: :destroy
   has_many :orders
   
