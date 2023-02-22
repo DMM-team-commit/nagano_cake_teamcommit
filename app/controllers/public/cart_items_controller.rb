@@ -9,7 +9,7 @@ class Public::CartItemsController < ApplicationController
   def destroy_all
     cart_items = CartItem.all
     cart_items.destroy_all
-    render 'index'
+    redirect_to cart_items_path
   end
 
 
