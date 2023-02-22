@@ -1,2 +1,41 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<div class = "container" >
+ <div class = "row" >
+  <div class = "mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+    <h3>マイページ</h3>
+      <h3>登録情報詳細</h3>
+      <%= link_to "編集する", customers_information_edit_path, class: "glyphicon glyphicon-tint btn btn-success ml-4" %>
+
+    <table class="table table-bordered">
+      <tr>
+        <th>氏名</th>
+        <td><%= @customer.last_name %><%= @customer.first_name %></th>
+      </tr>
+      <tr>
+        <th>フリガナ</th>
+        <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></th>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <td><%= @customer.post_code %></th>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= @customer.address %></th>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= @customer.phone %></th>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @customer.email %></th>
+      </tr>
+    </table>
+    <div>
+      <%= link_to "配送先一覧を見る", delivery_addresses_path, class: "glyphicon glyphicon-tint btn btn-primary ml-4" %>
+      <%= link_to "注文履歴一覧を見る", orders_path, class: "glyphicon glyphicon-tint btn btn-primary ml-4" %>
+    </div>
+
+
+
+

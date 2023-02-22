@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-9">
+      <p class="h2 mb-3">商品一覧<span class="h4">(全 <%= @item.count %> 件)</span></p>
+      <div class ="d-flex flex-row flex-wrap">
+        <% @items.each do |item| %>
+          <div class="col-md-3 mb-3">
+            <div class= "mb-1">
+              <%= link_to item_path(item.id) do %>
+                <%= image_tag item.get_image(150,100) %>
+              <% end %>
+            </div>
+            <div class= "mb-1"><%= item.name %></div>
+            ￥<%= item.with_tax_price.to_s(:delimited) %><br>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>

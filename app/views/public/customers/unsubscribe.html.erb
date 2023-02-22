@@ -1,0 +1,16 @@
+<div class = "container" >
+ <div class = "row" >
+  <div class = "mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+    <div>
+      <h2>本当に退会しますか？</h2>
+    <div>
+      <p>退会すると、会員情報やこれまでの購入履歴が閲覧できなくなります。<br>
+        退会する場合は、「退会する」をクリックしてください。</p>
+    </div>
+    <div>
+      <%= link_to '退会しない', customers_my_page_path, class: "glyphicon glyphicon-tint btn btn-primary ml-4" %>
+      <%= link_to "退会する", customers_withdraw_path, method: :patch, class: "glyphicon glyphicon-tint btn btn-danger ml-4" %>
+    </div>
+  </div>
+ </div>
+</div>

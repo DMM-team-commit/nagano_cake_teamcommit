@@ -1,2 +1,16 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<div class="container">
+  <div class="row mb-3">
+    <div class="col">
+      <h4 class="ml-5">商品編集</h4>
+    </div>
+  </div>
+  <%= render 'form', item_form: @item %>
+  <div class="row mb-5">
+     <div class="col-2 offset-md-5">
+      <div class="actions">
+        <%= f.submit "変更を保存" ,class: 'btn btn-md btn-outline-secondary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
