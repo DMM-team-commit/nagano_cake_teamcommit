@@ -40,7 +40,7 @@
         <div class="col-2"><strong>注文ステータス</strong></div>
         <div class="col-8">
           <%= form_with url: admin_order_path(@order.id), model: @order do |f| %>
-            <%= f.select :order_status, Order.order_statuses_i18n.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
+            <%= f.select :status, Order.statuses_i18n.invert %>
             <span class="ml-3"><%= f.submit "更新", class: "btn btn-success" %></span>
           <% end %>
         </div>
@@ -59,7 +59,7 @@
         <div class="col"></div>
       </div>
       <% @order_details.each do |order_detail| %>
-        <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id) do |f| %>
+
           <div class="row my-3 d-flex align-items-center">
             <div class="col-3"><%= order_detail.item.name %></div>
             <div class="col-2"><%= order_detail.price.to_s(:delimited) %></div>
@@ -69,7 +69,8 @@
                 <%= @subtotal.to_s(:delimited) %>
             </div>
             <div class="col-3 text-center">
-              <%= f.select :making_status, OrderDetail.making_statuses_i18n.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
+              <%= form_with model: order_detail, url: admin_order_detail_path(order_detail), method: :patch do |f| %>
+              <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
             </div>
             <div class="col"><%= f.submit "更新", class: "btn btn-success" %></div>
           </div>
