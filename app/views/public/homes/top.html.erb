@@ -16,7 +16,7 @@
     <div class="col-md-3">
      <div class="img_field">
       <%= link_to item_path(item) do %>
-      <%= image_tag no.image, size:"180x130" %>
+      <%= image_tag item.get_image(150,100) %>
       <% end %>
      </div>
      <p><%= item.name %></p>
