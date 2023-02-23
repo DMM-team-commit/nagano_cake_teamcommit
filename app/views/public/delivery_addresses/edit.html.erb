@@ -1,14 +1,34 @@
-<div class = "row" >
- <div class = "col-xs-12" >
-  <h1>配送先編集</h1><br>
-   <%= form_with model: @delivery_address do |f| %>
-    <h1>郵便番号</h1>
-     <%= f.text_field :post_code %>
-    <h1>住所</h1>
-     <%= f.text_field :address %> 
-    <h1>宛先</h1>
-     <%= f.text_field :addressee %>
-     <%= f.submit '変更内容を保存' %>
-   <% end %>
- </div>
+<div class="container">
+  <div class = "row" >
+    <h3 class="ml-5 mb-4">配送先編集</h3><br>
+  </div>
+  <%= form_with model: @delivery_address do |f| %>
+  <div class="row">
+    <div class="col-3">
+      <h4>郵便番号</h4>
+    </div>
+    <div class"col-6">
+      <%= f.text_field :post_code %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <h4>住所</h4>
+    </div>
+    <div class"col-6">
+      <%= f.text_field :address %> 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <h4>宛先</h4>
+    </div>
+    <div class"col-6">
+      <%= f.text_field :addressee %>
+    </div>
+  </div>
+  <div class="col-3">
+    <%= f.submit '変更内容を保存', class: "btn btn-outline-success" %>
+  </div>
+  <% end %>
 </div>
