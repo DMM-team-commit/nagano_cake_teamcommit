@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(
-   email: 'test@test.com',
+   email: 'test1@test.com',
    password: 'testtest'
 )
 
@@ -25,5 +25,5 @@ Genre.create!(name: '焼き菓子')
       price: 1000 + (n * 100),
       is_active: true
    )
-   
+
 end
