@@ -17,7 +17,10 @@ class Public::OrdersController < ApplicationController
       @order.post_code = @delivery_address.post_code
       @order.address = @delivery_address.address
       @order.name = @delivery_address.addressee
-      
+    elsif params[:order][:delivery_address_number] == "2"
+       @order.post_code
+       @order.address 
+       @order.name
     else
       render 'new'
     end
@@ -27,20 +30,20 @@ class Public::OrdersController < ApplicationController
   end
   
   def create
+    cart_items = current_customer.cart_items.all
     @order = current_customer.orders.new(order_params)
-    @order.customer_id = current_customer.id
-    @order.save
-    @cart_items = current_customer.cart_items
-    @cart_items.each do |cart_item|
-      @ordered_item = OrderedItem.new
-      @ordered_item.order_id = @order.id
-      @ordered_item.item_id = cart_item.item_id
-      @ordered_item.count = cart_item.count
-      @ordered_item.price_tax_included = cart_item.item.price_without_tax*1.1
-      @ordered_item.save
-    end
-    @cart_items.destroy_all
+     if @order.save
+      cart_items.each do |cart|
+       order_detail = OrderDetail.new
+       order_detail.order_id = @order.id
+       order_detail.item_id = cart.item_id
+       order_detail.amount = cart.amount
+       order_detail.price = cart.item.price
+       order_detail.save
+      end
+     end
     redirect_to orders_complete_path
+    cart_items.destroy_all
   end
 
   def index
@@ -49,13 +52,13 @@ class Public::OrdersController < ApplicationController
   
   def show
    @order = Order.find(params[:id])
-   @order_items = @order.order_items
+   @order_items = @order.order_details
   end
   
    private
   
   def order_params
-    params.require(:order).permit(:payment_method, :post_code, :address, :name, :total_payment, :status)
+    params.require(:order).permit(:payment_method, :post_code, :address, :name, :total_payment, :status, :postage)
   end
   
 end
