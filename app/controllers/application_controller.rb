@@ -8,5 +8,5 @@ class ApplicationController < ActionController::Base
     added_attrs = [ :last_name, :first_name, :last_name_kana, :first_name_kana, :email, :phone, :post_code, :address,:password ]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
   end
-  
+
 end
