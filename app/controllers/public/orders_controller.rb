@@ -25,6 +25,9 @@ class Public::OrdersController < ApplicationController
   end
   
   def create
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    cart = current_customer.carts.all
   end
 
   def index
