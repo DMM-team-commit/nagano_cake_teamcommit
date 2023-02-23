@@ -2,10 +2,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_admin!, if: :admin_url
-
-    def admin_url
+  
+  def admin_url
     request.fullpath.include?("/admin")
-    end
+  end
+  
+  def after_sign_in_path_for(resource)
+    customers_my_page_path(@customer)
+  end
 
   protected
 
