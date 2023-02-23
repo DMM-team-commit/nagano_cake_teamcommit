@@ -3,7 +3,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     #@delivery_address = current_customer.delivery_address
   end
-  
+
   def confirm
     @order = Order.new(order_params)
     @cart_items = current_customer.cart_items
@@ -21,14 +21,15 @@ class Public::OrdersController < ApplicationController
        @order.post_code
        @order.address 
        @order.name
+
     else
       render 'new'
     end
   end
-  
+
   def complete
   end
-  
+
   def create
     cart_items = current_customer.cart_items.all
     @order = current_customer.orders.new(order_params)
@@ -49,16 +50,16 @@ class Public::OrdersController < ApplicationController
   def index
     @orders = Order.where(customer_id: current_customer.id)
   end
-  
+
   def show
    @order = Order.find(params[:id])
    @order_items = @order.order_details
   end
-  
+
    private
-  
+
   def order_params
     params.require(:order).permit(:payment_method, :post_code, :address, :name, :total_payment, :status, :postage)
   end
-  
+
 end
