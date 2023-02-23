@@ -1,4 +1,6 @@
 class Public::CartItemsController < ApplicationController
+  before_action :authenticate_customer!
+
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
@@ -19,11 +21,12 @@ class Public::CartItemsController < ApplicationController
       cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
       cart_item.amount += params[:cart_item][:amount].to_i
       cart_item.save
+    elsif @cart_item.save
+        @cart_items = CartItem.all
+        redirect_to cart_items_path
     else
-      @cart_item.save
+        redirect_to items_path
     end
-    @cart_items = CartItem.all
-    redirect_to cart_items_path
   end
 
   def index
@@ -34,7 +37,7 @@ class Public::CartItemsController < ApplicationController
 
   def update
     cart_item = CartItem.find(params[:id])
-    cart_item.update(item_params)
+    cart_item.update(cart_item_params)
     @cart_items = CartItem.all
     redirect_to cart_items_path
   end
