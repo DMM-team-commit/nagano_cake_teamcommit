@@ -4,7 +4,7 @@ class Public::OrdersController < ApplicationController
     #@delivery_address = current_customer.delivery_address
   end
   
-  def comfirm
+  def confirm
     @order = Order.new(order_params)
     @cart_items = current_customer.cart_items
     if params [:order][:delivery_address_number] == "0"
@@ -25,9 +25,20 @@ class Public::OrdersController < ApplicationController
   end
   
   def create
-    @order = Order.new(order_params)
+    @order = current_customer.orders.new(order_params)
     @order.customer_id = current_customer.id
-    cart = current_customer.carts.all
+    @order.save
+    @cart_items = current_customer.cart_items
+    @cart_items.each do |cart_item|
+      @ordered_item = OrderedItem.new
+      @ordered_item.order_id = @order.id
+      @ordered_item.item_id = cart_item.item_id
+      @ordered_item.count = cart_item.count
+      @ordered_item.price_tax_included = cart_item.item.price_without_tax*1.1
+      @ordered_item.save
+    end
+    @cart_items.destroy_all
+    redirect_to orders_complete_path
   end
 
   def index
