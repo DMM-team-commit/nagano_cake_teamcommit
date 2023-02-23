@@ -9,6 +9,6 @@ class Customer < ApplicationRecord
   has_many :delivery_addresses,dependent: :destroy
   has_many :orders
   has_many :cart_items, dependent: :destroy
-
+  
 end
 
