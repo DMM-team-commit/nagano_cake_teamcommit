@@ -15,9 +15,9 @@
         </tr>
         <tr>
             <td>配送先</td>
-            <td><%= @order.delivery_address %><br>
+            <td><%= @order.address %><br>
                 <%= @order.post_code %><br>
-                <%= @order.addressee %>
+                <%= @order.name %>
             </td>
         </tr>
         <tr>
@@ -67,9 +67,9 @@
          <tr>
              <% @order_items.each do |order_item| %>
               <td><%= order_item.item.name %></td>
-              <td><%= (order_item.item.tax_free * 1.1).floor %></td>
-              <td><%= order_item.count %></td>
-            <td><%= (order_item.item.tax_free * 1.1).floor * order_item.count %></td>
+              <td><%= (order_item.price * 1.1).floor %></td>
+              <td><%= order_item.amount %></td>
+            <td><%= (order_item.subtotal * 1.1).floor %></td>
          </tr>
          <% end %>
      </tbody>

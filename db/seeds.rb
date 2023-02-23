@@ -11,9 +11,19 @@ Admin.create!(
    password: 'testtest'
 )
 
-Genre.create!(id: 1, name: 'ケーキ')
+Genre.create!(name: 'ケーキ')
 
-Genre.create!(id: 2, name: 'プリン')
+Genre.create!(name: 'プリン')
 
-Genre.create!(id: 3, name: '焼き菓子')
+Genre.create!(name: '焼き菓子')
 
+3.times do |n|
+   Item.create!(
+      genre_id: n + 1,
+      name: "商品テスト#{n + 1}",
+      description: "美味しいです。",
+      price: 1000 + (n * 100),
+      is_active: true
+   )
+   
+end

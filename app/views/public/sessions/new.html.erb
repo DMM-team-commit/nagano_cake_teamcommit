@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-10 mx-auto">
       <h2 class="my-5 text title-text">ログイン</h2>
-      <h6 class="ml-3 mb-4">会員の方はこちらからログイン</h6>
+      <h5 class="mb-4 text">会員の方はこちらからログイン</h5>
       <%= form_with model: @customer, url: session_path(resource_name) do |f| %>
       <div class="form-group">
         <%= f.label :email, "メールアドレス" %>
@@ -10,14 +10,14 @@
       </div>
       <div class="form-group">
         <%= f.label :password, "パスワード" %>
-        <%= f.password_field :password, autocomplete: "new-password",class: "ml-5"  %>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "●●●●●●",class: "ml-5"  %>
       </div>
       <div class="actions">
-        <%= f.submit "ログイン", class: 'btn btn-success' %>
+        <%= f.submit "ログイン", class: 'btn btn-outline-success' %>
       </div>
       <% end %>
       
-      <h5 class="mb-4 text">まだ会員登録がお済でない方</h4>
+      <h5 class="mb-4 text">まだ会員登録がお済でない方</h5>
       <p class="ml-4 mb-4 text">
         <u>
           <%= link_to " こちら", new_customer_registration_path, class: "text-dark" %>
