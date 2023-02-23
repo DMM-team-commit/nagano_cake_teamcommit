@@ -30,12 +30,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'top' => 'homes#top', as: 'top'
+    get "orders/customers/:id" => "orders#index"
     resources :items, only: [:index, :new, :create, :edit, :show, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
-    get "orders/customers/:id" => "orders#index"
+
   end
 
 

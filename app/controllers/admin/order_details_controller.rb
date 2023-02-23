@@ -17,12 +17,12 @@ before_action :authenticate_admin!
         end
         @order.update(status: 3) if is_updated
       end
-      redirect_to admin_order_path
+      redirect_to admin_order_path(@order.id)
     end
 
   private
 
   def order_detail_params
-    params.require(:order_detail).permit(:marking_status)
+    params.require(:order_detail).permit(:making_status)
   end
 end
