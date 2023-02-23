@@ -4,46 +4,45 @@
       <h2 class="my-5 text title-text">新規会員登録</h2>
       <%= form_with model: @customer, url: customer_registration_path do |f| %>
 
-      <div class="form-group">
-        <%= f.label "名前" %>
+      <div class="form-group row">
+        <%= f.label "名前", class: "col-sm-3 col-form-label col-form-label-sm"%>
         <%= f.text_field :last_name, autofocus: true, placeholder: "姓" %>
         <%= f.text_field :first_name, autofocus: true, placeholder: "名" %>
       </div>
-      <div class="form-group">
-        <%= f.label :last_kana_name, "フリガナ" %>
+      <div class="form-group row">
+        <%= f.label :last_kana_name, "フリガナ", class: "col-sm-3 col-form-label col-form-label-sm" %>
         <%= f.text_field :last_name_kana, autofocus: true, placeholder: "セイ" %>
         <%= f.text_field :first_name_kana, autofocus: true, placeholder: "メイ" %>
       </div>
-      <div class="form-group">
-        <%= f.label :email, "メールアドレス" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@mail.com",class: "ml-10" %>
+      <div class="form-group row">
+        <%= f.label :email, "メールアドレス", class: "col-sm-3 col-form-label col-form-label-sm" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@mail.com" %>
       </div>
-      <div class="form-group">
-        <%= f.label :postcode, "郵便番号" %>
+      <div class="form-group row">
+        <%= f.label :postcode, "郵便番号(ハイフンなし)", class: "col-sm-3 col-form-label col-form-label-sm" %>
         <%= f.text_field :post_code, autofocus: true, placeholder: "0000000" %>
       </div>
-      <div class="form-group">
-        <%= f.label :address, "住所" %>
+      <div class="form-group row">
+        <%= f.label :address, "住所", class: "col-sm-3 col-form-label col-form-label-sm" %>
         <%= f.text_field :address, autofocus: true, placeholder: "長野県長野市長野0-0" %>
       </div>
-      <div class="form-group">
-        <%= f.label :phone, "電話番号" %>
-        <%= f.text_field :phone, autofocus: true, placeholder: "0000000000" %>
+      <div class="form-group row">
+        <%= f.label :phone, "電話番号(ハイフンなし)", class: "col-sm-3 col-form-label col-form-label-sm" %>
+        <%= f.text_field :phone, autofocus: true, placeholder: "00000000000" %>
       </div>
-      <div class="form-group">
-        <%= f.label :password, "パスワード（6文字以上）" %>
-        <%= f.password_field :password, autocomplete: "new-password" %>
+      <div class="form-group row">
+        <%= f.label :password, "パスワード（6文字以上）" , class: "col-sm-3 col-form-label col-form-label-sm"%>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "●●●●●●" %>
       </div>
-      <div class="form-group">
-        <%= f.label :password_confirmation, "パスワード（確認用）" %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password"%>
+      <div class="form-group row">
+        <%= f.label :password_confirmation, "パスワード（確認用）", class: "col-sm-3 col-form-label col-form-label-sm" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "●●●●●●" %>
       </div>
-      <div class="form-group">
-        <%= f.submit "新規登録", class: "btn btn-success" %>
+      <div class="form-group row">
+        <%= f.submit "新規登録", class: "btn btn-outline-success" %>
       </div>
-      
       <% end %>
-      <h5 class="mb-4 text">既に登録済みの方</h4>
+      <h5 class="mb-4 text">既に登録済みの方</h5>
       <p class="ml-5 mb-4 text">
         <u>
           <%= link_to " こちら", new_customer_session_path, class: "text-dark" %>
