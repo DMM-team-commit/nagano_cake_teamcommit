@@ -25,6 +25,9 @@ class Public::OrdersController < ApplicationController
   end
   
   def create
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    cart = current_customer.carts.all
   end
 
   def index
@@ -32,8 +35,8 @@ class Public::OrdersController < ApplicationController
   end
   
   def show
-    @order = Order.find(params[:id])
-    @order_items = @order.order_details
+   @order = Order.find(params[:id])
+   @order_items = @order.order_items
   end
   
    private
