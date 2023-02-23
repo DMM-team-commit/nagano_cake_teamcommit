@@ -3,7 +3,7 @@
     <div class="col-10 mx-auto">
       <h2 class="my-5 text title-text">新規会員登録</h2>
       <%= form_with model: @customer, url: customer_registration_path do |f| %>
-
+      　<%= render 'layouts/error.message', obj: @customer %>
       <div class="form-group row">
         <%= f.label "名前", class: "col-sm-3 col-form-label col-form-label-sm"%>
         <%= f.text_field :last_name, autofocus: true, placeholder: "姓" %>
