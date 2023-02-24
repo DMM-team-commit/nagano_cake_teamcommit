@@ -14,11 +14,11 @@ Rails.application.routes.draw do
     get '/customers/my_page' => 'customers#show'
     get '/customers/unsubscribe' => 'customers#unsubscribe'
     patch '/customers/withdraw' => 'customers#withdraw'
-    resources :cart_items, only: [:index, :update, :destroy, :create]
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    get '/orders/complete' => 'orders#complete'
     resources :orders, only: [:new, :show, :create, :index]
     post '/orders/confirm' => 'orders#confirm'
-    get '/orders/complete' => 'customers#complete'
     resources :delivery_addresses, only: [:index, :edit, :create, :update, :destroy]
   end
 
@@ -30,12 +30,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'top' => 'homes#top', as: 'top'
+    get "orders/customers/:id" => "orders#index"
     resources :items, only: [:index, :new, :create, :edit, :show, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
-    get "orders/customers/:id" => "orders#index"
+
   end
 
 

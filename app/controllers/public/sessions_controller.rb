@@ -25,6 +25,10 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  def after_sign_in_path_for(resource)
+    root_path
+  end
+
   protected
 # 退会しているかを判断するメソッド
   def customer_state
@@ -35,6 +39,18 @@ class Public::SessionsController < Devise::SessionsController
     ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
     if @customer.valid_password?(params[:customer][:password])
       ## 【処理内容3】
+    end
+  end
+
+  def reject_user
+    @user = User.find_by(name: params[:user][:name])
+    if @user
+      if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == false)
+        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+        redirect_to new_user_registration
+      else
+        flash[:notice] = "項目を入力してください"
+      end
     end
   end
 end
