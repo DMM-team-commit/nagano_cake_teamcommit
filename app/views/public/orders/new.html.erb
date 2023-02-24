@@ -2,7 +2,7 @@
  <h1>注文情報入力</h1>
  <div class="row mt-3">
   <div class="offset-2 col-12">
-      
+
    <div class = "row">支払い方法</div>
     <%= form_with model: @order, url: orders_confirm_path, local:true do |f| %>
      <div class = "form-check" >
@@ -11,7 +11,7 @@
         <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
         <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer] %>
      </div>
-     
+
    <div class = "row">お届け先 </div>
      <div class = "form-check" >
         <%= f.radio_button :delivery_address_number, 0 %>
@@ -26,7 +26,7 @@
         <%= f.radio_button :delivery_address_number, 1 %>
         <%= f.label :登録済住所から選択 %><br>
          <div class>
-          <%= f.select :address_id, options_from_collection_for_select(DeliveryAddress.all, :id, :address) %>
+          <%= f.select :address_id, options_from_collection_for_select(DeliveryAddress.where(customer_id: current_customer.id), :id, :address) %>
          </div>
      </div>
      <div class >
