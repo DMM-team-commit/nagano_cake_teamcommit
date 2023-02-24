@@ -6,10 +6,7 @@ class ApplicationController < ActionController::Base
   def admin_url
     request.fullpath.include?("/admin")
   end
-
-  def after_sign_in_path_for(resource)
-    customers_my_page_path(@customer)
-  end
+  
 
   protected
 
