@@ -1,7 +1,7 @@
 class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
-    #@delivery_address = current_customer.delivery_address
+    #@delivery_address = current_customer.address
   end
 
   def confirm
@@ -21,7 +21,6 @@ class Public::OrdersController < ApplicationController
        @order.post_code
        @order.address 
        @order.name
-
     else
       render 'new'
     end
